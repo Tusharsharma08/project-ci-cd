@@ -41,10 +41,9 @@ jobs:
         # clientId: ${{ secrets.AZURE_CLIENT_ID }}
         # clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        resource-group: flask-app-rg
-        cluster-name: flask-app-cluster
+        # resource-group: flask-app-rg
+        # cluster-name: flask-app-cluster
         
     - name: Deploy to AKS
-      uses: actions/checkout@v3
       run: |
         kubectl apply -f ./k8s/deployment.yaml --validate=false
