@@ -45,11 +45,6 @@ jobs:
         cluster-name: flask-app-cluster
         
     - name: Deploy to AKS
-      uses: azure/cli@v2
-      with:
-        azcliversion: latest
-        inlineScript: |
-          kubectl apply -f ./k8s/deployment.yaml --validate=false
-      # run: |
-      #   # az aks get-credentials --resource-group flask-app-rg --name flask-app-cluster 
-      #   kubectl apply -f ./k8s/deployment.yaml --validate=false
+      uses: actions/checkout@v3
+      run: |
+        kubectl apply -f ./k8s/deployment.yaml --validate=false
