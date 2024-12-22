@@ -37,4 +37,4 @@ jobs:
     - name: Deploy to AKS
       run: |
         az aks get-credentials --resource-group flask-app-rg --name flask-app-cluster
-        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f .k8s/deployment.yaml
