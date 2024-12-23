@@ -41,9 +41,8 @@ jobs:
 
     - name: Get AKS Credentials
       run: |
-         az aks get-credentials --resource-group <RESOURCE_GROUP_NAME> --name <CLUSTER_NAME>
+         az aks get-credentials --resource-group flask-app-rg --name flask-app-cluster
 
-        
     - name: Deploy to AKS
       run: |
         kubectl apply -f ./k8s/deployment.yaml 
