@@ -38,6 +38,11 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Get AKS Credentials
+      run: |
+         az aks get-credentials --resource-group <RESOURCE_GROUP_NAME> --name <CLUSTER_NAME>
+
         
     - name: Deploy to AKS
       run: |
