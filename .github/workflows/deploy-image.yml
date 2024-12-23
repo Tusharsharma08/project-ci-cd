@@ -7,7 +7,7 @@ on:
     paths:
       - 'app/**' # Trigger only for changes in the `app` directory
       - 'k8s/**' # Trigger only for changes in the `k8s` directory
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/deploy-image.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
