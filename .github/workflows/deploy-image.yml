@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'app/**' # Trigger only for changes in the `app` directory
+      - 'k8s/**' # Trigger only for changes in the `k8s` directory
+      - '.github/workflows/deploy.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
