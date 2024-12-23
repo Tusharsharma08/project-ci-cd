@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'terraform/**' # Trigger only for changes in the `k8s` directory
+      - '.github/workflows/terraform-deploy.yml'
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -26,6 +29,9 @@ jobs:
     # Step 4: Terraform Apply
     - name: Terraform Apply
       env:
-        creds: ${{ AZURE_CREDENTIALS }}
+        ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
+        ARM_SUBSCRIPTION_ID: "${{ secrets.SUBSCRIPTION_ID }}"
+        ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+
       run: |
         terraform apply -auto-approve
