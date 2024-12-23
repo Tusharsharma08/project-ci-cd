@@ -5,6 +5,11 @@ provider "azurerm" {
 subscription_id = var.subscription_id
 }
 
+variable "subscription_id" {
+  description = "The Azure subscription ID"
+  type        = string
+}
+
 resource "azurerm_resource_group" "app_rg" {
   name     = "flask-app-rg"
   location = "Central India"
