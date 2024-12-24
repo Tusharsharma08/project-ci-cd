@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: flaskazureapp.azurecr.io/flask-app:latest
+        image: ${{ secrets.ACR_LOGIN_SERVER }}/flask-app:${{ github.sha }}  
         ports:
-        - containerPort: 5001
+        - containerPort: 5000
         
 ---
 apiVersion: v1
@@ -30,4 +30,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5001
+      targetPort: 5000
