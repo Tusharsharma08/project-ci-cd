@@ -100,7 +100,7 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false -var="resource_group=${{ vars.RESOURCE_GROUP }}" -var="cluster_name=${{ vars.CLUSTER_NAME }}" -var="container_registry_name=${{ vars.CONTAINER_REGISTRY_NAME }}
+      run: terraform plan -input=false -var="resource_group=${{ vars.RESOURCE_GROUP }}" -var="cluster_name=${{ vars.CLUSTER_NAME }}" -var="container_registry_name=${{ vars.CONTAINER_REGISTRY_NAME }}"
       working-directory: terraform 
 
      # On push to "master", build or change infrastructure according to Terraform configuration files
