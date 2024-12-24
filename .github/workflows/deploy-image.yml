@@ -45,7 +45,7 @@ jobs:
 
     - name: Get AKS Credentials
       run: |
-         az aks get-credentials --resource-group ${{ var.RESOURCE_GROUP }} --name ${{ var.CLUSTER_NAME }}
+         az aks get-credentials --resource-group ${{ vars.RESOURCE_GROUP }} --name ${{ vars.CLUSTER_NAME }}
 
     - name: Deploy to AKS
       run: |
