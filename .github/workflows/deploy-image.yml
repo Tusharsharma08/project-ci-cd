@@ -48,5 +48,9 @@ jobs:
          az aks get-credentials --resource-group ${{ vars.RESOURCE_GROUP }} --name ${{ vars.CLUSTER_NAME }}
 
     - name: Deploy to AKS
+      env:
+        image_name: ${{ secrets.ACR_LOGIN_SERVER }}/flask-app:${{ github.sha }}
       run: |
-        kubectl apply -f ./k8s/deployment.yaml image_name="${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ github.sha }}"
+        envsubst < ./k8s/deployment.yaml | kubectl apply -f -
+      # run: |
+      #   kubectl apply -f ./k8s/deployment.yaml image_name="${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ github.sha }}"
