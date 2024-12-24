@@ -50,19 +50,5 @@ jobs:
          az aks get-credentials --resource-group ${{ vars.RESOURCE_GROUP }} --name ${{ vars.CLUSTER_NAME }}
 
     - name: Deploy to AKS
-      run: |
-       image_name=${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}
-
-       envsubst < ./k8s/deployment.yaml | kubectl apply -f -
-      # env:
-      #   image_name: ${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}
-      # run: |
-      #   sed "s|\${image_name}|${{ env.image_name }}|" ./k8s/deployment.yaml | kubectl apply -f -
-      # run: |
-      #   kubectl apply -f ./k8s/deployment.yaml image_name=${{ vars.ACR_LOGIN_SERVER }}/flask-app:latest
-      # run: kubectl apply -f ./k8s/deployment.yaml # Apply the template WITH the placeholder
-       
+      run: kubectl apply -f ./k8s/deployment.yaml
      
-
-    # - name: Set Image with kubectl
-    #   run: kubectl set image deployment/flask-app flask-app="${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}"
