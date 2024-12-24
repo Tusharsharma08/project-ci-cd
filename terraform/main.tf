@@ -10,7 +10,7 @@ terraform {
 provider "azurerm" {
   features {
   }
-subscription_id = var.subscription_id
+  subscription_id = var.subscription_id
 }
 
 variable "subscription_id" {
@@ -56,7 +56,7 @@ resource "azurerm_postgresql_flexible_server" "postgres" {
   administrator_password = "Password123!"
 
   storage_mb = 32768
-  version    = "14"
+  version    = "13"
   zone       = "1"
 }
 
