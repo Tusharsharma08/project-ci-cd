@@ -27,6 +27,12 @@ resource "azurerm_kubernetes_cluster" "app_aks" {
   }
 }
 
+resource "azurerm_role_assignment" "acr_pull_role" {
+  scope                = azurerm_container_registry.app_acr.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_kubernetes_cluster.app_aks.identity[0].principal_id
+}
+
 resource "azurerm_postgresql_flexible_server" "postgres" {
   name                = "flask-postgres-db"
   location            = azurerm_resource_group.app_rg.location
