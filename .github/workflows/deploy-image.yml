@@ -51,7 +51,8 @@ jobs:
 
     - name: Deploy to AKS
       run: |
-       $image_name=${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}
+       image_name=${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}
+
        envsubst < ./k8s/deployment.yaml | kubectl apply -f -
       # env:
       #   image_name: ${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}
