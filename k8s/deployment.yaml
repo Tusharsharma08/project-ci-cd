@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: IMAGE_PLACEHOLDER
+        image: image_placeholder
         ports:
         - containerPort: 5000
         
