@@ -59,7 +59,7 @@ jobs:
       # run: kubectl apply -f ./k8s/deployment.yaml # Apply the template WITH the placeholder
        
       run: |
-       sed "s|image_placeholder|${{ secrets.ACR_LOGIN_SERVER }}/flask-app:latest|" ./k8s/deployment.yaml | kubectl apply -f -
+       sed "s|image_placeholder|${{ vars.ACR_LOGIN_SERVER }}/flask-app:latest|" ./k8s/deployment.yaml | kubectl apply -f -
 
     # - name: Set Image with kubectl
     #   run: kubectl set image deployment/flask-app flask-app="${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}"
