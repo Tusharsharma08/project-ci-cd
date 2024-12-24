@@ -45,7 +45,7 @@ jobs:
 
     - name: Get AKS Credentials
       run: |
-         az aks get-credentials --resource-group flask-app-rg --name flask-app-cluster
+         az aks get-credentials --resource-group ${{ var.RESOURCE_GROUP }} --name ${{ var.CLUSTER_NAME }}
 
     - name: Deploy to AKS
       run: |
