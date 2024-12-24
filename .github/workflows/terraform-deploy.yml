@@ -56,7 +56,7 @@ name: 'Terraform'
 on:
   push:
     branches: main
-     paths:
+    paths:
       - 'terraform/**' 
       - '.github/workflows/terraform-deploy.yml' #
 
