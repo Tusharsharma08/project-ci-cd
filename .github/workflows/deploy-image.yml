@@ -29,6 +29,8 @@ jobs:
       run: |
         docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/flask-app:$IMAGE_TAG ./app 
         docker push ${{ secrets.ACR_LOGIN_SERVER }}/flask-app:$IMAGE_TAG
+    outputs:
+        image_tag: ${{ steps.build.outputs.IMAGE_TAG }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,7 +51,7 @@ jobs:
 
     - name: Deploy to AKS
       env:
-        image_name: ${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ env.IMAGE_TAG }}
+        image_name: ${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ needs.build.outputs.image_tag }}
       run: |
         envsubst < ./k8s/deployment.yaml | kubectl apply -f -
       # run: |
