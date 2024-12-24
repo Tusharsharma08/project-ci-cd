@@ -49,4 +49,4 @@ jobs:
 
     - name: Deploy to AKS
       run: |
-        kubectl apply -f ./k8s/deployment.yaml image_name="${{ secrets.ACR_LOGIN_SERVER }}/flask-app:${{ github.sha }}"
+        kubectl apply -f ./k8s/deployment.yaml image_name="${{ vars.ACR_LOGIN_SERVER }}/flask-app:${{ github.sha }}"
