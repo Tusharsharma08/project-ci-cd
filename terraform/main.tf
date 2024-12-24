@@ -1,17 +1,17 @@
 resource "azurerm_resource_group" "app_rg" {
-  name     = "flask-app-rg"
+  name     = var.resource_group
   location = "Central India"
 }
 
 resource "azurerm_container_registry" "app_acr" {
-  name                = "flaskazureapp"
+  name                = var.container_registry_name
   resource_group_name = azurerm_resource_group.app_rg.name
   location            = azurerm_resource_group.app_rg.location
   sku                 = "Basic"
 }
 
 resource "azurerm_kubernetes_cluster" "app_aks" {
-  name                = "flask-app-cluster"
+  name                = var.cluster_name
   location            = azurerm_resource_group.app_rg.location
   resource_group_name = azurerm_resource_group.app_rg.name
   dns_prefix          = "flaskapp"
