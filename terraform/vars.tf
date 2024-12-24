@@ -1,9 +1,14 @@
 # Input variable: Name of Resource Group
 variable "resource_group" {
-  description = "The name of the Resource Group"
+  description = "Azure Resource Group"
 }
 
 # Input variable: Name of the Cluster
 variable "cluster_name" {
-  description = "Cluster Name"
+  description = "Azure Cluster"
+}
+
+# Input variable: Name of the Container registry
+variable "container_registry_name" {
+  description = "Azure Container registry name"
 }
